@@ -1,0 +1,53 @@
+﻿@model List<About>
+@{
+    ViewData["Title"] = "About";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+
+<div class="content">
+	<div class="container-fluid">
+		<h4 class="page-title">@ViewBag.a1</h4>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header">
+						<div class="card-title">@ViewBag.a2</div>
+					</div>
+					<div class="card-body">
+						<div>
+							@{
+								string a3 = ViewBag.a3 as string;
+								int chunkSize = 75;
+								string formatted = "";
+
+								if (!string.IsNullOrEmpty(a3))
+								{
+									int fullChunks = a3.Length / chunkSize;
+									for (int i = 0; i < a3.Length; i += chunkSize)
+									{
+										int len = Math.Min(chunkSize, a3.Length - i);
+										formatted += a3.Substring(i, len);
+
+										if (i + len < a3.Length)
+										{
+											formatted += "-"+"<br/>";
+										}
+									}
+								}
+							}
+							<div>
+								@Html.Raw(formatted)
+							</div>
+							<br />
+						</div>
+						<a href="/About/AboutUpdate/" class="btn btn-outline-info">Hakkımda Güncelle  </a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+

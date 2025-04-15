@@ -1,0 +1,104 @@
+﻿@model FeatureViewModel
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Layout/Index.cshtml";
+}
+
+<div class="content">
+	<div class="container-fluid">
+		<h4 class="page-title">Öne Çıkanlar</h4>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header">
+						<div class="card-body">
+							<table class="table mt-3">
+								
+								<thead>
+									<tr>
+										<th style="color:darkslategray; font-size: 40px;">İletişim</th>
+									</tr>
+								</thead>
+								<tbody>
+									@foreach (var item in Model.Contactss.Take(2))
+									{
+										<tr>
+											<td><b>Telefon:</b>@item.Phone2</td>
+											<td><b>Email:</b>@item.Email1</td>
+											<td><b>Adres:</b>@item.Address</td>
+										</tr>
+									}
+								</tbody>
+								<thead>
+									<tr>
+										<th style="color: darkslategray; font-size: 40px;">Son Gelen Mesaj</th>
+									</tr>
+								</thead>
+								<tbody>
+									@{
+										var lastMessage = Model.Messagess?.OrderByDescending(m => m.MessageId).FirstOrDefault();
+									}
+
+									@if (lastMessage != null)
+									{
+										<tr>
+											<td><b>Ad Soyad: </b>@lastMessage.NameSurname</td>
+											<td><b>Başlık: </b>@lastMessage.Subject</td>
+											@if (lastMessage.MessageDetail.Length > 100)
+											{
+												<td>
+													<b>Detay: </b>@lastMessage.MessageDetail.Substring(0, 100)
+													...
+												</td>
+											}
+											
+											else
+											{
+												<b>Detay: </b><td>@lastMessage.MessageDetail</td>
+											}
+
+
+
+											<td><b>Email: </b>@lastMessage.Email</td>
+											<td><b>Tarih: </b>@lastMessage.SendDate</td>
+										</tr>
+									}
+
+								</tbody>
+								<thead>
+									<tr>
+										<th style="color: darkslategray; font-size: 40px;">Yapılacaklar</th>
+									</tr>
+								</thead>
+								<tbody>
+										@foreach (var item in Model.ToDoListss)
+										{
+										<tr>
+											<td> <b>~</b>@item.Title</td>
+											<td> <b>Tarih: </b>@item.Date</td>
+										</tr>
+										}
+								</tbody>
+								<thead>
+									<tr>
+										<th style="color: darkslategray; font-size: 40px;">Hakkımda</th>
+									</tr>
+								</thead>
+								<tbody>
+										@foreach (var item in Model.Aboutss.Take(2))
+										{
+										<tr>
+											<td> <b>~</b>@item.SubDescription</td>
+										</tr>
+										}
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+

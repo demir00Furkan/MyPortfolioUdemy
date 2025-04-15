@@ -1,0 +1,57 @@
+﻿@model List<Contact>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+<div class="content">
+	<div class="container-fluid">
+		<h4 class="page-title">İletişim</h4>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header">
+						<div class="card-title">İletişim Bilgileri</div>
+					</div>
+					<div class="card-body">
+						<div class="card-sub">
+							İletişim Bilgilerini Aşağıdaki Butondan Güncelleyebilirsiniz.
+						</div>
+						<table class="table mt-3">
+							<thead>
+								<tr>
+									
+									<th scope="col">Ünvan</th>
+									<th scope="col">Detay</th>
+									<th scope="col">Telefon</th>
+									<th scope="col">Email1</th>
+									<th scope="col">Email2</th>
+									<th scope="col">Address</th>
+								</tr>
+							</thead>
+							<tbody>
+									@foreach (var item in Model)
+									{
+										<tr>
+											<td>@item.Title</td>
+											<td>@item.Description</td>
+											<td>@item.Phone2</td>
+											<td>@item.Email1</td>
+											<td>@item.Email2</td>
+											<td>@item.Address</td>
+										</tr>
+									}
+							</tbody>
+						</table>
+						<a href="/Contact/ContactUpdate/" class="btn btn-outline-info">İletişim Güncelle  </a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+

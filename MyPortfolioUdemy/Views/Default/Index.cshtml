@@ -1,0 +1,34 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<!--[if lt IE 9 ]><html class="no-js oldie" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+@await Component.InvokeAsync("_HeadComponentPartial")
+
+<body id="top">
+
+    @await Component.InvokeAsync("_NavbarComponentPartial")
+
+    @await Component.InvokeAsync("_FeatureComponenetPartial")
+
+    @await Component.InvokeAsync("_AboutComponentPartial")
+
+    @await Component.InvokeAsync("_PortfolioComponentPartial")
+ 
+    @await Component.InvokeAsync("_TestimonialComponentPartial")
+
+    @await Component.InvokeAsync("_StatisticComponentPartial")
+
+    @await Component.InvokeAsync("_ContactComponentPartial") 
+
+    @await Component.InvokeAsync("_FooterComponentPartial")
+
+</body>
+
+</html>
